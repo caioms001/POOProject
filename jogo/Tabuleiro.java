@@ -31,7 +31,7 @@ public class Tabuleiro{
       }
       System.out.println();
       if(linha != 2) {
-        System.out.println("-------");
+        System.out.println("-----------");
       }
     }
   }
