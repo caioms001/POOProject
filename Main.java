@@ -4,10 +4,8 @@ public class Main{
 
     public static void main (String[] Args){
         
-        Jogo jogo = new Jogo();
+        Jogo jogo  
 
-        jogo.iniciar();
-
-    }
+        new Jogo();
 
 }

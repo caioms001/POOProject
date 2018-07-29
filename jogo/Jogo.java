@@ -5,12 +5,34 @@ import jogadores.*;
 
 public class Jogo{
 
-    private Tabuleiro tabuleiro;
+    private static Jogo jogo;
+
+     public static Jogo partida(String jogador1) {
+        if (jogo == null){
+            this.jogo = new Jogo(jogador1);
+        }
+        return jogo;
+    }
+
+    public static Jogo partida(String jogador1, String jogador2) {
+        if (jogo == null){
+            this.jogo = new Jogo(jogador1, jogador2);
+        }
+        return jogo;
+    }
+
+    private Jogo(String jogador1){    
+        private Tabuleiro tabuleiro;
+        
+    }
+
+    private Jogo(String jogador1, String jogador2){
+
+        private Tabuleiro tabuleiro;
+    }
+
 
     public void iniciar() {
-        //esse método inicia o jogo
-        //criar instância tabuleiro
-        //chamar método adversário
 
         this.tabuleiro = new Tabuleiro();
 
