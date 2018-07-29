@@ -2,7 +2,7 @@ package jogo;
 
 public class Tabuleiro{
 
-  private Posicao posicoes[][];
+  Posicao posicoes[][];
 
   private static Tabuleiro tabuleiro;
 

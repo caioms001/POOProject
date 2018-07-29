@@ -1,3 +1,5 @@
+package jogo;
+
 public class Posicao {
 	char estado;
 	int coluna, linha;
@@ -8,8 +10,8 @@ public class Posicao {
 		limpar();
 	}
 
-	public limpar() {
-		this.estado = null;
+	public void limpar() {
+		this.estado = ' ';
 	}
 
 	public void exibir() {
