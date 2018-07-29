@@ -2,35 +2,41 @@ package jogo;
 
 public class Tabuleiro{
 
-    private char matriz[][] = new char[3][3];
+  private char matriz[][] = new char[3][3];
 
-    public void exibir(){
-        //exibe a matriz tabuleiro com as casas preenchidas
+  private static Tabuleiro tabuleiro;
 
-        for(int i = 0; i<3; i++){
-
-            for(int j = 0; j<3; j++){
-
-                System.out.print( matriz[i][j] );
-
-                if(j!=2){
-
-                    System.out.print("|");
-
-                }
-
-            }
-
-            System.out.println();
-
-            if(i!=2){
-
-            System.out.println("-------");
-
-            }
-
-        }
-
+  public static Tabuleiro getInstancia() {
+    if (tabuleiro == null) {
+      this.tabuleiro = new Tabuleiro();
     }
+    return tabuleiro;
+  }
+  private Tabuleiro() {
+    // Construtor privado
+  }
 
+  public void exibir() {
+    //exibe a matriz tabuleiro com as casas preenchidas
+    for(int linha = 0; linha < 3; linha++) {
+      for(int coluna = 0; coluna < 3; coluna++) {
+        exibirPosicao(matriz[linha][coluna]);
+        if(coluna != 2) {
+          System.out.print("|");
+        }
+      }
+      System.out.println();
+      if(linha!=2) {
+        System.out.println("-------");
+      }
+    }
+  }
+
+  public static void exibirPosicao(char content) {
+      switch (content) {
+         case 'X':  System.out.print(" X "); break;
+         case 'O': System.out.print(" O "); break;
+         default: System.out.print("   "); break;
+      }
+   }
 }
