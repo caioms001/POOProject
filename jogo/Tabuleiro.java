@@ -8,7 +8,7 @@ public class Tabuleiro{
 
   public static Tabuleiro getInstancia() {
     if (tabuleiro == null) {
-      this.tabuleiro = new Tabuleiro();
+      tabuleiro = new Tabuleiro();
     }
     return tabuleiro;
   }
@@ -32,7 +32,7 @@ public class Tabuleiro{
     }
   }
 
-  public static void exibirPosicao(char content) {
+  public void exibirPosicao(char content) {
       switch (content) {
          case 'X':  System.out.print(" X "); break;
          case 'O': System.out.print(" O "); break;

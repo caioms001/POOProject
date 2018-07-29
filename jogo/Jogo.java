@@ -1,56 +1,50 @@
 package jogo;
-
-import jogadores.*;
-
+// import jogadores.*;
 
 public class Jogo{
 
-    private static Jogo jogo;
+  private static Tabuleiro tabuleiro;
+  // private static MetodoJogador metodoJogador;
 
-     public static Jogo partida(String jogador1) {
-        if (jogo == null){
-            this.jogo = new Jogo(jogador1);
-        }
-        return jogo;
+  private Jogo(){
+
+      tabuleiro = tabuleiro.getInstancia();
+      tabuleiro.exibir();
+
+  }
+
+  private static Jogo jogo;
+
+  public static Jogo inicio(String tipo) {
+    if (jogo == null){
+        jogo = new Jogo();
     }
+    jogada(tipo);
+    return jogo;
+  }
 
-    public static Jogo partida(String jogador1, String jogador2) {
-        if (jogo == null){
-            this.jogo = new Jogo(jogador1, jogador2);
-        }
-        return jogo;
+
+  public static void iniciar() {
+
+
+  }
+
+  public void encerrar() {
+    //esse método encerra o jogo
+    //exibe mensagem "obrigado pela partida"
+  }
+
+  public static void jogada(String tipo) {
+    if (tipo.equals("jogador")) {
+      System.out.println("Vai jogar contra um amigo então?");    
+      // this.metodoJogador = Pessoa.getInstancia(); 
+    }else{
+      System.out.println("Você nunca vai ganhar de mim!");
+      // this.metodoJogador = Ia.getInstancia();
     }
+  }
 
-    private Jogo(String jogador1){    
-        private Tabuleiro tabuleiro;
-        
-    }
-
-    private Jogo(String jogador1, String jogador2){
-
-        private Tabuleiro tabuleiro;
-    }
-
-
-    public void iniciar() {
-
-        this.tabuleiro = new Tabuleiro();
-
-        tabuleiro.exibir();
-
-    }
-
-    public void encerrar() {
-        //esse método encerra o jogo
-        //exibe mensagem "obrigado pela partida"
-    }
-
-    public void adversario() {
-        //esse método seleciona se o jogo será contra P2 ou IA
-    }
-
-    public void verificar() {
-        //esse método verifica se há vencedor na rodada
-    }
-
+  public void verificar() {
+    //esse método verifica se há vencedor na rodada
+  }
 }
