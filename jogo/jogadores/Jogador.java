@@ -1,3 +1,5 @@
+package jogadores;
+
 public class Jogador{
 
     private String nome;

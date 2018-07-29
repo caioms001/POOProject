@@ -1,3 +1,5 @@
+package jogo;
+
 public class Tabuleiro{
 
     private char matriz[][] = new char[3][3];

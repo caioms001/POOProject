@@ -1,8 +1,11 @@
+package jogo;
+
+import jogadores.*;
+
+
 public class Jogo{
 
     private Tabuleiro tabuleiro;
-
-
 
     public void iniciar() {
         //esse método inicia o jogo
