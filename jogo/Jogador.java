@@ -13,7 +13,7 @@ public class Jogador {
     return this.simbolo;
   }
   
-  public void setNome(String nome){
+  protected void setNome(String nome){
     this.nome = nome;
   }
 

@@ -3,6 +3,11 @@ import java.util.Scanner;
 
 public class Pessoa extends jogo.Jogador implements Jogada{
     private Scanner entrada = new Scanner(System.in);
+
+    public Pessoa(String nome) {
+    	super.setNome(nome);
+    }
+
     @Override
     public int jogada(){
         int casa;

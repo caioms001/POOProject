@@ -51,11 +51,9 @@ public class Jogo{
   public void criarJogador(String tipo, int i){
 
     if(tipo.equals("ia")){
-      jogadores[i] = new Ia();
-      jogadores[i].setNome(tipo);
+      jogadores[i] = new Ia(tipo);
     }else{
-      jogadores[i] = new Pessoa();
-      jogadores[i].setNome(tipo);
+      jogadores[i] = new Pessoa(tipo);
     }
 
     if (jogadores[0] != null) {
