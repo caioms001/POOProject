@@ -46,5 +46,6 @@ public class Tabuleiro{
       } else
         System.out.print("|");
     }
+    System.out.println();
   }
 }
