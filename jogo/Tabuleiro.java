@@ -12,6 +12,7 @@ public class Tabuleiro{
     }
     return tabuleiro;
   }
+  
   private Tabuleiro() {
     posicoes = new Posicao[3][3];
     for (int linha = 0; linha < 3; ++linha) {
