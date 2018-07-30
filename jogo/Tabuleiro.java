@@ -56,16 +56,19 @@ public class Tabuleiro{
 
   public boolean realizarJogada(int casa, int turno){
     this.turno = turno;
-    return verificaPosicao(casa);
+    int linha = traduzirPosicao(casa, 0);
+    int coluna = traduzirPosicao(casa, 1);
+    if(verificaPosicao(linha, coluna)){
+      marcarPosicao(posicoes[linha][coluna]);
+      return true;
+    } else {
+      return false;
+    }
   }
 
-  public boolean verificaPosicao (int casa){
-    if (casa <= 9 && casa >= 1) {
-      int linha = traduzirPosicao(casa, 0);
-      int coluna = traduzirPosicao(casa, 1);
-      
+  public boolean verificaPosicao (int linha, int coluna){
+    if ((linha + coluna) <= 9 && (linha + coluna) >= 0) {
       if(posicoes[linha][coluna].getValor() == ' '){
-        marcarPosicao(posicoes[linha][coluna]);
         return true;
       } else {
         System.out.println("Já há algo nessa casa. Jogue Novamente!\n");

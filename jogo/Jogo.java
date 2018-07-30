@@ -49,7 +49,6 @@ public class Jogo{
   }
   
   public void criarJogador(String tipo, int i){
-
     if(tipo.equals("ia")){
       jogadores[i] = new Ia(tipo);
     }else{
@@ -82,7 +81,6 @@ public class Jogo{
       tabuleiro.exibir();
       trocaTurnos();
       System.out.println("\u0007");
-
   }
 
   public void informarResultado(){
