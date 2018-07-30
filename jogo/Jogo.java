@@ -1,10 +1,10 @@
 package jogo;
-// import jogadores.*;
+import jogo.jogadores.*;
 
 public class Jogo{
 
   private static Tabuleiro tabuleiro;
-  // private static MetodoJogador metodoJogador;
+  private static MetodoJogador metodoJogador;
 
   private Jogo(){
 

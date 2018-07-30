@@ -1,5 +1,5 @@
 package jogadores;
 
-public class Ia{
+public class Ia implements MetodoJogador{
 
 }
