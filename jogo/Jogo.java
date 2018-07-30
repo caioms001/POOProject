@@ -4,13 +4,17 @@ import java.util.Scanner;
 
 public class Jogo{
 
-  private String adversario;
   private static Tabuleiro tabuleiro;
   private Scanner entrada = new Scanner(System.in);
-  
+  private Jogador[] jogadores = new Jogador[2];
+  private int turno = 0;
+
   private Jogo(){
       tabuleiro = tabuleiro.getInstancia();
       iniciarInterface();
+      do{
+        rodada();
+      }while(verificarVencedor());
   }
 
   private static Jogo jogo;
@@ -24,38 +28,63 @@ public class Jogo{
 
   public void iniciarInterface(){
     System.out.println("Olá jogador, vamos jogar jogo da velha?");
-    escolherAdversario();
-    rodada();
-    tabuleiro.exibirGuia();
-    tabuleiro.exibir();
 
+    for (int i= 0;i < 2; i++) {
+      escolherJogador(i);
+    }
   }
 
-  public void escolherAdversario(){
-    Boolean valido = false;
-    do{
-      System.out.println("Contra quem deseja jogar? Digite Jogador ou IA e aperte Enter");
-      adversario = entrada.next().toLowerCase();
-      if(adversario.equals("jogador") || adversario.equals("ia")){
-        this.adversario = adversario;
-        valido = true;
-      }else{
-        System.out.println("Tipo de jogador invalido! Entre Jogador ou IA");
-        valido = false;
-      }
-    } while(!valido);
+  public void escolherJogador(int i){
+      String jogador;
+      System.out.println("Digite o nome do jogador ou IA (para computador) e aperte Enter!");
+      jogador = entrada.next().toLowerCase();
+      criarJogador(jogador, i);
+  }
+  
+  public void criarJogador(String tipo, int i){
+
+    if(tipo.equals("ia")){
+      jogadores[i] = new Ia();
+      jogadores[i].setNome(tipo);
+    }else{
+      jogadores[i] = new Pessoa();
+      jogadores[i].setNome(tipo);
+    }
+
+    if (jogadores[0] != null) {
+      jogadores[0].setSimbolo('X');
+    }
+    if (jogadores[1] != null) {
+      jogadores[1].setSimbolo('O');
+    }
+  }
+
+  public void trocaTurnos(){
+    if (turno == 0) {
+      turno = 1;
+    }else{
+      turno = 0;
+    }
   }
 
   public void rodada(){
-    System.out.println("Adversário é" + adversario);
+      boolean jogadaRealizada;
+      tabuleiro.exibirGuia();
+      System.out.println("Siga o guia acima do campo e entre com a posição da sua jogada!");
+      if (turno == 0) {
+        do{
+          jogadaRealizada = tabuleiro.realizarJogada(jogadores[turno].jogada());
+        }while(jogadaRealizada);
+      }else{
+        tabuleiro.realizarJogada(jogadores[turno].jogada());
+      }
+      tabuleiro.exibir();
+      trocaTurnos();
+      System.out.println("\u0007");
+
   }
-  // public static void jogador(String tipo) {
-  //   if (tipo.equals("jogador")) {
-  //     System.out.println("Vai jogar contra um amigo então?");    
-  //     // this.metodoJogador = Pessoa.getInstancia(); 
-  //   }else{
-  //     System.out.println("Você nunca vai ganhar de mim!");
-  //     // this.metodoJogador = Ia.getInstancia();
-  //   }
-  // }
+
+  public boolean verificarVencedor(){
+    return true;
+  }
 }

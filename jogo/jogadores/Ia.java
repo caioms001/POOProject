@@ -1,5 +1,6 @@
-package jogadores;
+package jogo.jogadores;
 
-public class Ia implements MetodoJogador{
+public class Ia extends jogo.Jogador{
 
+  
 }

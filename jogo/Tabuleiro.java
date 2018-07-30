@@ -43,9 +43,23 @@ public class Tabuleiro{
       if(i%3 == 0 && i != 9) {
         System.out.println();
         System.out.println("-----------");
-      } else
-        System.out.print("|");
+      } else {
+        if (i != 9) {
+          System.out.print("|");
+        }
+      }
     }
     System.out.println("\n");
+  }
+
+  public boolean realizarJogada(int casa){
+    
+  }
+
+  public void verificaPosicao(int casa){
+
+  }
+  public void marcarPosicao(int linha, int coluna){
+
   }
 }
