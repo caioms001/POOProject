@@ -1,8 +1,8 @@
 package jogo;
 
 public class Posicao {
-	char estado;
-	int coluna, linha;
+	private char valor;
+	private int coluna, linha;
 
 	public Posicao(int col, int lin) {
 		this.coluna = col;
@@ -11,15 +11,19 @@ public class Posicao {
 	}
 
 	public void limpar() {
-		this.estado = ' ';
+		this.valor = ' ';
 	}
   
-  public char getValor(){
-    return this.estado;
+  public char getValor() {
+    return this.valor;
+  }
+
+  public void setValor(char valor) {
+    this.valor = valor;
   }
 
 	public void exibir() {
-    switch (this.estado) {
+    switch (this.valor) {
       case 'X': 
         System.out.print(" X ");
         break;

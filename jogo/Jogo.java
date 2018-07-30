@@ -116,5 +116,6 @@ public class Jogo{
         System.out.println("                 |_|                   ");
         break;
     }
+    System.out.println();
   }
 }

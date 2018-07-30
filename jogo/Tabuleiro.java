@@ -2,8 +2,7 @@ package jogo;
 
 public class Tabuleiro{
 
-  Posicao posicoes[][];
-
+  private static Posicao posicoes[][];
   private static Tabuleiro tabuleiro;
   private int turno;
   
@@ -65,7 +64,7 @@ public class Tabuleiro{
       int linha = traduzirPosicao(casa, 0);
       int coluna = traduzirPosicao(casa, 1);
       
-      if(posicoes[linha][coluna].estado == ' '){
+      if(posicoes[linha][coluna].getValor() == ' '){
         marcarPosicao(posicoes[linha][coluna]);
         return true;
       } else {
@@ -89,9 +88,9 @@ public class Tabuleiro{
 
   public void marcarPosicao(Posicao posicao){
     if (turno == 0) {
-      posicao.estado = 'X';
+      posicao.setValor('X');
     }else{
-      posicao.estado = 'O';
+      posicao.setValor('O');
     }
   }
 

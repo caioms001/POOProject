@@ -24,7 +24,7 @@ We made this small game for as a final project on Object Oriented Programming at
 
 ## Team
 
-- Caio
-- João
-- Bruno
-- Juliana
+- [Bruno Crestana](https://github.com/BrunoCrestana)
+- [Caio Moraes](https://github.com/caioms001)
+- [João Pedro](https://github.com/joaopedrovbs)
+- [Juliana Caichiolo](https://github.com/JuCaichiolo)
