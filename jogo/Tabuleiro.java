@@ -24,6 +24,7 @@ public class Tabuleiro{
   }
 
   public void exibir() {
+    System.out.println();
     for(int linha = 0; linha < 3; linha++) {
       for(int coluna = 0; coluna < 3; coluna++) {
         posicoes[linha][coluna].exibir();
@@ -39,6 +40,7 @@ public class Tabuleiro{
   }
 
   public void exibirGuia() {
+    System.out.println();
     for(int i = 1; i <= 9; i++) {
       System.out.print(" " + i + " ");
       if(i%3 == 0 && i != 9) {
@@ -95,37 +97,33 @@ public class Tabuleiro{
 
   public char verificarEstado(){
     boolean draw = true;
-    System.out.println("Verificando");
     for(int k = 0; k < 3; k++){
       if(posicoes[k][0].getValor() != ' ' &&
         posicoes[k][0].getValor() == posicoes[k][1].getValor() &&
         posicoes[k][1].getValor() == posicoes[k][2].getValor()){
-        System.out.println("Linha Certa");
         return posicoes[k][0].getValor();
       }
 
       if(posicoes[0][k].getValor() != ' ' &&
         posicoes[0][k].getValor() == posicoes[1][k].getValor() &&
         posicoes[1][k].getValor() == posicoes[2][k].getValor()){
-        System.out.println("Coluna Certa");
         return posicoes[0][k].getValor();
       }
       
       draw = draw && (posicoes[k][0].getValor() != ' ') &&
                      (posicoes[k][1].getValor() != ' ') && 
                      (posicoes[k][2].getValor() != ' ');
-  }
+    }
 
-  if(posicoes[0][0].getValor() != ' ' &&
-    posicoes[0][0].getValor() == posicoes[1][1].getValor() &&
-    posicoes[1][1].getValor() == posicoes[2][2].getValor())
-    return posicoes[0][0].getValor();
+    if(posicoes[0][0].getValor() != ' ' &&
+      posicoes[0][0].getValor() == posicoes[1][1].getValor() &&
+      posicoes[1][1].getValor() == posicoes[2][2].getValor())
+      return posicoes[0][0].getValor();
 
-  if(posicoes[2][0].getValor() != ' ' &&
-    posicoes[2][0].getValor() == posicoes[1][1].getValor() &&
-    posicoes[1][1].getValor() == posicoes[0][2].getValor())
-    return posicoes[2][0].getValor();
-  System.out.println(draw);
-  return draw ? 'd' : 'f';
+    if(posicoes[2][0].getValor() != ' ' &&
+      posicoes[2][0].getValor() == posicoes[1][1].getValor() &&
+      posicoes[1][1].getValor() == posicoes[0][2].getValor())
+      return posicoes[2][0].getValor();
+    return draw ? 'd' : 'f';
   }
 }

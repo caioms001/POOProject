@@ -9,7 +9,7 @@ public class Jogador {
   
   public int jogada(){
     int casa;
-    System.out.println("\nJogador: " + this.getNome() + " com símbolo: " + this.getSimbolo());
+    System.out.println("\nTurno do jogador " + getNome().toUpperCase() + " com símbolo " + this.getSimbolo());
     System.out.print("Qual posição você escolhe? ");
     casa = entrada.nextInt();
     return casa;

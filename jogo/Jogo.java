@@ -30,8 +30,8 @@ public class Jogo{
   }
 
   public void iniciarInterface(){
+    System.out.println();
     System.out.println("Olá jogador, vamos jogar jogo da velha?");
-
     for (int i= 0;i < 2; i++) {
       escolherJogador(i);
     }
@@ -39,7 +39,7 @@ public class Jogo{
 
   public void escolherJogador(int i){
       String jogador;
-      System.out.println("Digite o nome do jogador ou IA (para computador) e aperte Enter!");
+      System.out.println("Digite o nome do jogador " + (i+1) + " ou IA (para computador) e aperte Enter!");
       jogador = entrada.next().toLowerCase();
       criarJogador(jogador, i);
   }
@@ -90,13 +90,30 @@ public class Jogo{
   public void informarResultado(){
     switch (this.estadoJogo) {
       case 'X': 
-        System.out.println("X Vencedor");
+        System.out.println("__   __   _____             _                 _ _ ");
+        System.out.println("\\ \\ / /  / ____|           | |               | | |");
+        System.out.println(" \\ V /  | |  __  __ _ _ __ | |__   ___  _   _| | |");
+        System.out.println("  > <   | | |_ |/ _` | '_ \\| '_ \\ / _ \\| | | | | |");
+        System.out.println(" / . \\  | |__| | (_| | | | | | | | (_) | |_| |_|_|");
+        System.out.println("/_/ \\_\\  \\_____|\\__,_|_| |_|_| |_|\\___/ \\__,_(_|_)");
         break;
       case 'O':
-        System.out.println("O Vencedor");
+        System.out.println("  ____      _____             _                 _ _ ");
+        System.out.println(" / __ \\    / ____|           | |               | | |");
+        System.out.println("| |  | |  | |  __  __ _ _ __ | |__   ___  _   _| | |");
+        System.out.println("| |  | |  | | |_ |/ _` | '_ \\| '_ \\ / _ \\| | | | | |");
+        System.out.println("| |__| |  | |__| | (_| | | | | | | | (_) | |_| |_|_|");
+        System.out.println(" \\____/    \\_____|\\__,_|_| |_|_| |_|\\___/ \\__,_(_|_)");
         break;
-      case 'd':
-        System.out.println("Empate");
+      case 'd':   
+        System.out.println(" ______                       _        ");
+        System.out.println("|  ____|                     | |       ");
+        System.out.println("| |__   _ __ ___  _ __   __ _| |_ ___  ");
+        System.out.println("|  __| | '_ ` _ \\| '_ \\ / _` | __/ _ \\ ");
+        System.out.println("| |____| | | | | | |_) | (_| | ||  __/ ");
+        System.out.println("|______|_| |_| |_| .__/ \\__,_|\\__\\___| ");
+        System.out.println("                 | |                   ");
+        System.out.println("                 |_|                   ");
         break;
     }
   }
