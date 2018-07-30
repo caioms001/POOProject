@@ -26,6 +26,7 @@ public class Jogo{
     System.out.println("Olá jogador, vamos jogar jogo da velha?");
     escolherAdversario();
     rodada();
+    tabuleiro.exibirGuia();
     tabuleiro.exibir();
 
   }
