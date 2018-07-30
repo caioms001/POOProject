@@ -5,7 +5,8 @@ public class Tabuleiro{
   Posicao posicoes[][];
 
   private static Tabuleiro tabuleiro;
-
+  private int turno;
+  
   public static Tabuleiro getInstancia() {
     if (tabuleiro == null) {
       tabuleiro = new Tabuleiro();
@@ -52,14 +53,79 @@ public class Tabuleiro{
     System.out.println("\n");
   }
 
-  public boolean realizarJogada(int casa){
-    
+  public boolean realizarJogada(int casa, int turno){
+    this.turno = turno;
+    return verificaPosicao(casa);
   }
 
-  public void verificaPosicao(int casa){
-
+  public boolean verificaPosicao (int casa){
+    if (casa <= 9 && casa >= 1) {
+      int linha = traduzirPosicao(casa, 0);
+      int coluna = traduzirPosicao(casa, 1);
+      
+      if(posicoes[linha][coluna].estado == ' '){
+        marcarPosicao(posicoes[linha][coluna]);
+        return true;
+      } else {
+        System.out.println("Já há algo nessa casa. Jogue Novamente!\n");
+        return false;
+      }   
+    }else{
+      System.out.println("Entrada incompativel! Jogue Novamente!\n");
+      return false;
+    }
   }
-  public void marcarPosicao(int linha, int coluna){
+  
+  public int traduzirPosicao (int casa, int pos){
+    casa = casa-1;
+    if (pos == 0) {
+      return casa/3;      
+    } else{
+      return casa%3;
+    }
+  }
 
+  public void marcarPosicao(Posicao posicao){
+    if (turno == 0) {
+      posicao.estado = 'X';
+    }else{
+      posicao.estado = 'O';
+    }
+  }
+
+  public char verificarEstado(){
+    boolean draw = true;
+    System.out.println("Verificando");
+    for(int k = 0; k < 3; k++){
+      if(posicoes[k][0].getValor() != ' ' &&
+        posicoes[k][0].getValor() == posicoes[k][1].getValor() &&
+        posicoes[k][1].getValor() == posicoes[k][2].getValor()){
+        System.out.println("Linha Certa");
+        return posicoes[k][0].getValor();
+      }
+
+      if(posicoes[0][k].getValor() != ' ' &&
+        posicoes[0][k].getValor() == posicoes[1][k].getValor() &&
+        posicoes[1][k].getValor() == posicoes[2][k].getValor()){
+        System.out.println("Coluna Certa");
+        return posicoes[0][k].getValor();
+      }
+      
+      draw = draw && (posicoes[k][0].getValor() != ' ') &&
+                     (posicoes[k][1].getValor() != ' ') && 
+                     (posicoes[k][2].getValor() != ' ');
+  }
+
+  if(posicoes[0][0].getValor() != ' ' &&
+    posicoes[0][0].getValor() == posicoes[1][1].getValor() &&
+    posicoes[1][1].getValor() == posicoes[2][2].getValor())
+    return posicoes[0][0].getValor();
+
+  if(posicoes[2][0].getValor() != ' ' &&
+    posicoes[2][0].getValor() == posicoes[1][1].getValor() &&
+    posicoes[1][1].getValor() == posicoes[0][2].getValor())
+    return posicoes[2][0].getValor();
+  System.out.println(draw);
+  return draw ? 'd' : 'f';
   }
 }

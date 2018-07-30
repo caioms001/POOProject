@@ -8,13 +8,16 @@ public class Jogo{
   private Scanner entrada = new Scanner(System.in);
   private Jogador[] jogadores = new Jogador[2];
   private int turno = 0;
+  private char estadoJogo;
 
   private Jogo(){
       tabuleiro = tabuleiro.getInstancia();
       iniciarInterface();
       do{
         rodada();
-      }while(verificarVencedor());
+        this.estadoJogo = tabuleiro.verificarEstado();
+      }while(this.estadoJogo == 'f');
+      informarResultado();
   }
 
   private static Jogo jogo;
@@ -39,6 +42,10 @@ public class Jogo{
       System.out.println("Digite o nome do jogador ou IA (para computador) e aperte Enter!");
       jogador = entrada.next().toLowerCase();
       criarJogador(jogador, i);
+  }
+
+  public int getTurno(){
+    return this.turno;
   }
   
   public void criarJogador(String tipo, int i){
@@ -71,20 +78,26 @@ public class Jogo{
       boolean jogadaRealizada;
       tabuleiro.exibirGuia();
       System.out.println("Siga o guia acima do campo e entre com a posição da sua jogada!");
-      if (turno == 0) {
-        do{
-          jogadaRealizada = tabuleiro.realizarJogada(jogadores[turno].jogada());
-        }while(jogadaRealizada);
-      }else{
-        tabuleiro.realizarJogada(jogadores[turno].jogada());
-      }
+      do{
+        jogadaRealizada = tabuleiro.realizarJogada(jogadores[turno].jogada(), turno);
+      }while(!jogadaRealizada);
       tabuleiro.exibir();
       trocaTurnos();
       System.out.println("\u0007");
 
   }
 
-  public boolean verificarVencedor(){
-    return true;
+  public void informarResultado(){
+    switch (this.estadoJogo) {
+      case 'X': 
+        System.out.println("X Vencedor");
+        break;
+      case 'O':
+        System.out.println("O Vencedor");
+        break;
+      case 'd':
+        System.out.println("Empate");
+        break;
+    }
   }
 }

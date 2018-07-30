@@ -13,6 +13,10 @@ public class Posicao {
 	public void limpar() {
 		this.estado = ' ';
 	}
+  
+  public char getValor(){
+    return this.estado;
+  }
 
 	public void exibir() {
     switch (this.estado) {

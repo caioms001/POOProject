@@ -6,13 +6,12 @@ public class Jogador {
   char simbolo = ' ';
   String nome = "";
   private Scanner entrada = new Scanner(System.in);
-  tabuleiro.getInstance();
+  
   public int jogada(){
     int casa;
-    System.out.println("Jogador: " + this.getNome() + " com símbolo: " + this.getSimbolo());
+    System.out.println("\nJogador: " + this.getNome() + " com símbolo: " + this.getSimbolo());
     System.out.print("Qual posição você escolhe? ");
     casa = entrada.nextInt();
-    System.out.println("A casa é: " + casa);
     return casa;
   }
 
