@@ -80,20 +80,27 @@ public class Tabuleiro{
     }
   }
   
-  public int traduzirPosicao (int casa, int pos){
+  public int traduzirPosicao (int casa, int pos) {
     casa = casa-1;
     if (pos == 0) {
       return casa/3;      
-    } else{
+    } else {
       return casa%3;
     }
   }
 
-  public void marcarPosicao(Posicao posicao){
+  public void marcarPosicao(Posicao posicao) {
     if (turno == 0) {
       posicao.setValor('X');
-    }else{
+    } else {
       posicao.setValor('O');
+    }
+  }
+  public void marcarPosicao(int linha, int coluna) {
+    if (turno == 0) {
+      posicoes[linha][coluna].setValor('X');
+    } else {
+      posicoes[linha][coluna].setValor('O');
     }
   }
 
