@@ -35,4 +35,15 @@ public class Tabuleiro{
       }
     }
   }
+
+  public void exibirGuia() {
+    for(int i = 1; i <= 9; i++) {
+      System.out.print(" " + i + " ");
+      if(i%3 = 0 && i != 9) {
+        System.out.println();
+        System.out.println("-----------");
+      } else
+        System.out.print("|");
+    }
+  }
 }
