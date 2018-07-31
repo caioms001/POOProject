@@ -1,4 +1,13 @@
+/**************************************************************************\
+  A classe tabuleiro é utilizada para representar ao tabuleiro em si.
+  Então é nele que existe uma matriz de Posicao, para criar o tabuleiro.
+  Temos o método para exibir o tabuleiro atual, o tabuleiro guia,
+  o método que verifica se alguém ganhou, o método que realiza a jogada,
+  e também os métodos que auxiliam esse método.
+\**************************************************************************/
+
 package jogo;
+
 import jogo.jogadores.*;
 
 public class Tabuleiro{
@@ -7,6 +16,9 @@ public class Tabuleiro{
   private static Tabuleiro tabuleiro;
   private int turno;
   
+  // Como utilizamos Singleton, só podemos acessar o objeto tabuleiro
+  // chamando tabuleiro.getInstancia(). Isso nos garante que só teremos
+  // uma instância de Tabuleiro.
   public static Tabuleiro getInstancia() {
     if (tabuleiro == null) {
       tabuleiro = new Tabuleiro();
@@ -14,6 +26,8 @@ public class Tabuleiro{
     return tabuleiro;
   }
   
+  // Alteramos também o seu construtor para quando ele ser chamado,
+  // ele já instanciar todas as posições do tabuleiro.
   private Tabuleiro() {
     posicoes = new Posicao[3][3];
     for (int linha = 0; linha < 3; ++linha) {
@@ -23,6 +37,7 @@ public class Tabuleiro{
     }
   }
 
+  // O método exibir serve para mostrar o tabuleiro no estado atual.
   public void exibir() {
     System.out.println();
     for(int linha = 0; linha < 3; linha++) {
@@ -39,6 +54,8 @@ public class Tabuleiro{
     }
   }
 
+  // O método exibirGuia serve para mostrar o tabuleiro com os números
+  // das casas para guiar a jogada do usuário.
   public void exibirGuia() {
     System.out.println();
     for(int i = 1; i <= 9; i++) {
@@ -55,8 +72,10 @@ public class Tabuleiro{
     System.out.println("\n");
   }
 
+  // O método realizarJogada é quem faz todas as chamadas para que a jogada
+  // seja realizada. Ele recebe a casa que o usuário escolheu e qual usuário
+  // escolheu. Após isso, ele realiza as chamadas necessárias.
   public boolean realizarJogada(int casa, int turno){
-   
     this.turno = turno;
     if(verificaJogada(casa)){
       int linha = traduzirPosicao(casa, 0);
@@ -72,6 +91,8 @@ public class Tabuleiro{
     }
   }
 
+  // O método verificaJogada serve para analisar se o usuário selecionou
+  // uma casa que exista.
   public boolean verificaJogada(int casa){
     if (casa <= 9 && casa > 0) {
       return true;
@@ -81,6 +102,8 @@ public class Tabuleiro{
     }
   }
 
+  // O método verificaPosicao serve para analizar se a casa que o
+  // usuário selecionou está vazia.
   public boolean verificaPosicao (int linha, int coluna){
     if(posicoes[linha][coluna].getValor() == ' '){
       return true;
@@ -90,8 +113,10 @@ public class Tabuleiro{
     }   
   }
   
+  // O método traduzirPosicao serve para receber a casa que o usuário
+  // selecionou e transformar isso para a linha e coluna da matriz do tabuleiro.
   public int traduzirPosicao (int casa, int pos) {
-    casa = casa-1;
+    casa = casa - 1;
     if (pos == 0) {
       return casa/3;      
     } else {
@@ -99,6 +124,10 @@ public class Tabuleiro{
     }
   }
 
+  // O método marcarPosicao é sobrecarregado pois deixamos duas opções para a
+  // implementação. Uma que recebe diretamente o objeto Posição que você quer
+  // alterar, ou então ele pode receber a linha e coluna desejada, e ele acessa
+  // o objeto desejado.
   public void marcarPosicao(Posicao posicao) {
     if (turno == 0) {
       posicao.setValor('X');
@@ -114,8 +143,12 @@ public class Tabuleiro{
     }
   }
 
+  // O método verificarEstado serve para sabermos se temos um vencedor e
+  // quem é, ou se foi um empate, ou se ainda há possibilidades de jogadas.
+  // Se há um vencendor, ele retorna o seu ícone, 'd' para empate e 'f' se 
+  // ainda há possibilidades.
   public char verificarEstado(){
-    boolean draw = true;
+    boolean velha = true;
     for(int k = 0; k < 3; k++){
       if(posicoes[k][0].getValor() != ' ' &&
         posicoes[k][0].getValor() == posicoes[k][1].getValor() &&
@@ -129,7 +162,7 @@ public class Tabuleiro{
         return posicoes[0][k].getValor();
       }
       
-      draw = draw && (posicoes[k][0].getValor() != ' ') &&
+      velha = velha && (posicoes[k][0].getValor() != ' ') &&
                      (posicoes[k][1].getValor() != ' ') && 
                      (posicoes[k][2].getValor() != ' ');
     }
@@ -143,6 +176,6 @@ public class Tabuleiro{
       posicoes[2][0].getValor() == posicoes[1][1].getValor() &&
       posicoes[1][1].getValor() == posicoes[0][2].getValor())
       return posicoes[2][0].getValor();
-    return draw ? 'd' : 'f';
+    return velha ? 'd' : 'f';
   }
 }
