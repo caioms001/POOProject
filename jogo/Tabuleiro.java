@@ -77,10 +77,10 @@ public class Tabuleiro{
   // escolheu. Após isso, ele realiza as chamadas necessárias.
   public boolean realizarJogada(int casa, int turno){
     this.turno = turno;
-    if(verificaJogada(casa)){
+    if(verificarJogada(casa)){
       int linha = traduzirPosicao(casa, 0);
       int coluna = traduzirPosicao(casa, 1);
-      if(verificaPosicao(linha, coluna)){
+      if(verificarPosicao(linha, coluna)){
         marcarPosicao(posicoes[linha][coluna]);
         return true;
       } else {
@@ -91,9 +91,9 @@ public class Tabuleiro{
     }
   }
 
-  // O método verificaJogada serve para analisar se o usuário selecionou
+  // O método verificarJogada serve para analisar se o usuário selecionou
   // uma casa que exista.
-  public boolean verificaJogada(int casa){
+  public boolean verificarJogada(int casa){
     if (casa <= 9 && casa > 0) {
       return true;
     } else{
@@ -102,9 +102,9 @@ public class Tabuleiro{
     }
   }
 
-  // O método verificaPosicao serve para analizar se a casa que o
+  // O método verificarPosicao serve para analizar se a casa que o
   // usuário selecionou está vazia.
-  public boolean verificaPosicao (int linha, int coluna){
+  public boolean verificarPosicao (int linha, int coluna){
     if(posicoes[linha][coluna].getValor() == ' '){
       return true;
     } else {
