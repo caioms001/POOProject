@@ -18,7 +18,6 @@ public class Jogo {
   private char estadoJogo;
   private boolean jogadaRealizada;
 
-
   // Como utilizamos Singleton, só podemos acessar o objeto jogo chamando
   // jogo.inicio(). Isso nos garante que só teremos uma instância de Jogo.
   public static Jogo inicio() {
