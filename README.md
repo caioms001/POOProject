@@ -1,26 +1,31 @@
 # Tic tac toe
 
-We made this small game for as a final project on Object Oriented Programming at Universidade Federal do ABC.
+We made this small game in Java as a final project on Object Oriented Programming at Universidade Federal do ABC.
 
 ## Project Patters
 
-- Facade
 - Singleton
+- Facade
 - Strategy
 
 ## Instructions
 
-- Compile Everything with `javac *.java`
-- Run the main class with `java Main`
+- Compile Everything with `javac *.java jogo/*.java jogo/jogadores/*.java` just to be sure that you are compiling everything again.
+- Run the game by it's Main class with `java Main`
 
 ## Game Flux
 
-1. Ask user if 2 player or against IA
-2. Print board and board guide
-3. Tell user he is X and ask for play 1 - 9
-4. Place play on board
-5. Check if there's winner
-6. If second user go to 2
+1. Ask *Player 1* for name, use player name for a person or IA for IA.
+2. Ask *Player 2* for name, use player name for a person or *IA* for IA.
+3. Print board and board guide
+4. Show *Player 1's* Symbol and ask for his play using his name.
+5. Place play on board
+6. Check if there's winner or draw
+7. If there's a winner display message.
+8. Show *Player 2's* Symbol and ask for his play using his name.
+9. Place play on board
+10. Check if there's winner
+11. If there's a winner or draw display message.
 
 ## Team
 
