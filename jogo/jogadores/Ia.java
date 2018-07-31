@@ -1,8 +1,6 @@
 package jogo.jogadores;
-import java.util.Scanner;
 
 public class Ia extends jogo.Jogador implements Jogada{
-    private Scanner entrada = new Scanner(System.in);
     
     public Ia(String nome) {
     	super.setNome(nome);
@@ -10,6 +8,6 @@ public class Ia extends jogo.Jogador implements Jogada{
 
     @Override
     public int jogada(){
-        return (int) Math.max(1,Math.floor(Math.random()*9));
+        return (int) Math.max(1,Math.ceil(Math.random()*9));
   }
 }

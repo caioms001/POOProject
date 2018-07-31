@@ -1,4 +1,5 @@
 package jogo;
+import jogo.jogadores.*;
 
 public class Tabuleiro{
 
@@ -55,29 +56,38 @@ public class Tabuleiro{
   }
 
   public boolean realizarJogada(int casa, int turno){
+   
     this.turno = turno;
-    int linha = traduzirPosicao(casa, 0);
-    int coluna = traduzirPosicao(casa, 1);
-    if(verificaPosicao(linha, coluna)){
-      marcarPosicao(posicoes[linha][coluna]);
+    if(verificaJogada(casa)){
+      int linha = traduzirPosicao(casa, 0);
+      int coluna = traduzirPosicao(casa, 1);
+      if(verificaPosicao(linha, coluna)){
+        marcarPosicao(posicoes[linha][coluna]);
+        return true;
+      } else {
+        return false;
+      }
+    }else{
+      return false;
+    }
+  }
+
+  public boolean verificaJogada(int casa){
+    if (casa <= 9 && casa > 0) {
       return true;
-    } else {
+    } else{
+      System.out.println("Entrada incompativel! Jogue Novamente!\n");
       return false;
     }
   }
 
   public boolean verificaPosicao (int linha, int coluna){
-    if ((linha + coluna) <= 9 && (linha + coluna) >= 0) {
-      if(posicoes[linha][coluna].getValor() == ' '){
-        return true;
-      } else {
-        System.out.println("Já há algo nessa casa. Jogue Novamente!\n");
-        return false;
-      }   
-    }else{
-      System.out.println("Entrada incompativel! Jogue Novamente!\n");
+    if(posicoes[linha][coluna].getValor() == ' '){
+      return true;
+    } else {
+      System.out.println("Já há algo nessa casa. Jogue Novamente!\n");
       return false;
-    }
+    }   
   }
   
   public int traduzirPosicao (int casa, int pos) {

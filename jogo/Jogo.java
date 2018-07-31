@@ -9,6 +9,7 @@ public class Jogo{
   private Jogador[] jogadores = new Jogador[2];
   private int turno = 0;
   private char estadoJogo;
+  private boolean jogadaRealizada;
 
   private Jogo(){
       tabuleiro = tabuleiro.getInstancia();
@@ -49,37 +50,46 @@ public class Jogo{
   }
   
   public void criarJogador(String tipo, int i){
-    if(tipo.equals("ia")){
-      jogadores[i] = new Ia(tipo);
-    }else{
-      jogadores[i] = new Pessoa(tipo);
-    }
+    try{
+      if(tipo.equals("ia")){
+        jogadores[i] = new Ia(tipo);
+      }else{
+        jogadores[i] = new Pessoa(tipo);
+      }
 
-    if (jogadores[0] != null) {
-      jogadores[0].setSimbolo('X');
-    }
-    if (jogadores[1] != null) {
-      jogadores[1].setSimbolo('O');
+      if (jogadores[0] != null) {
+        jogadores[0].setSimbolo('X');
+      }
+      if (jogadores[1] != null) {
+        jogadores[1].setSimbolo('O');
+      }
+    } catch(Exception e){
+      System.out.println("Erro ao setar jogadores " + e);
     }
   }
 
-  public void trocaTurnos(){
+  public void trocaTurnos() throws Exception{
     if (turno == 0) {
       turno = 1;
-    }else{
+    }else if (turno == 1){
       turno = 0;
+    } else{  
+      throw new Exception("Turno Invalido");
     }
   }
 
   public void rodada(){
-      boolean jogadaRealizada;
       tabuleiro.exibirGuia();
       System.out.println("Siga o guia acima do campo e entre com a posição da sua jogada!");
       do{
         jogadaRealizada = tabuleiro.realizarJogada(jogadores[turno].jogada(), turno);
       }while(!jogadaRealizada);
       tabuleiro.exibir();
-      trocaTurnos();
+      try{
+        trocaTurnos();
+      } catch(Exception e){
+        System.out.println("Erro ao trocar turno: " + e);
+      }
       System.out.println("\u0007");
   }
 
